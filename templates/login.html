@@ -1,0 +1,60 @@
+{% extends 'layoutlogin.html' %}
+{% block loginBloque %}
+<main>
+  <div class="modal-dialog text-center body-login">
+
+    <div class="col-sm-8 main-section">
+
+      <div class="modal-content">
+
+        <div class="col-12 user-img">
+          <img src="/static/images/loginicon.png" style="height: 250px; width: 250px; margin-left: 35px; margin-top: -60px; margin-bottom: 0px;">
+        </div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+          <div class="text-danger" style="font-size: small; font-weight: bolder;">
+            <ul class=flashes>
+              {% for category, message in messages %}
+              <li class="{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+          {% endwith %}
+
+        <form action="/login" method="POST" class="col-12 claseforma" id="formulario">
+
+          <div class="form-group" id="user-group"> 
+            <label for="usernameLogin" class="form-label1">Usuario</label>
+            <div class="form-group-input">
+                <input type="text" class="form-control" name="usernameLogin" id="usernameLogin">
+            </div>
+            <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 digitos y solo puede contener numeros, letras y guion bajo.</p>
+          </div>
+          <div>
+
+            <div class="form-group" id="password-group">
+              <label for="passwordLogin" class="form-label1">Contraseña</label>
+              <div class="form-group-input">
+                <input type="password" class="form-control" name="passwordLogin" id="passwordLogin">
+              </div>
+              <p class="formulario__input-error">La contraseña tiene que ser de 4  a 12 digitos.</p>
+            </div>
+
+            <br>
+            <input type="submit" class="btn btn-primary btn-lg" style="padding-left: 89px; padding-right: 87px;" value="Iniciar sesión">
+          </div>
+          <!-- Mensaje de error -->
+          <div class="formulario__mensaje" id="formulario__mensaje">
+            <p><i class="fas fa-exclamation-triangle"></i><b>Error:</b> Por favor rellena el formulario correctamente.</p>
+          </div>
+          <br>
+         
+        </form>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+{% endblock %}

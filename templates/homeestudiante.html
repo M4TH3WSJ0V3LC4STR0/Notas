@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <!-- Titulo principal de HOME -->
+
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12">
+                <br>
+                <h2>Bienvenido a</h2>
+            </div>
+            <div class="col-12">
+                <h1>Universidad de caldas</h1>
+            </div>
+        </div>
+    </div>
+</head>
+
+<body>
+    <div class="container" style="margin-left: 220px;">
+        <div class="row row-cols-1 row-cols-lg-5 g-2 g-lg-5">
+            <div class="col text-center d-flex align-items-center justify-content-center">
+                <div class="card casa-card" style="width: 15rem;">
+                    <img src="/static/images/materiasicon.png" class="card-img-top home-img" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">MATERIAS</h5>
+                        <p class="card-text text-center">Visualizar listado de materias con sus respectivas notas y comentarios hechos por el docente.</p>
+                    </div>
+                    <a href="/Materias" class="btn btn-primary rounded-pill">ACCEDER</a>
+                </div>
+            </div>
+
+            <div class="col text-center d-flex align-items-center justify-content-center">
+                <div class="card casa-card" style="width: 15rem;">
+                    <img src="/static/images/actividadicon.png" class="card-img-top home-img" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">ACTIVIDADES</h5>
+                        <p class="card-text text-center">Registro de actividades e ingreso de notas del estudiante</p>
+                    </div>
+                    <a href="/listar_actividades" class="btn btn-primary rounded-pill">ACCEDER</a>
+                </div>
+            </div>
+
+            <div class="col text-center d-flex align-items-center justify-content-center">
+                <div class="card casa-card" style="width: 15rem;">
+                    <img src="/static/images/commenticon.png" class="card-img-top home-img" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">COMENTARIOS</h5>
+                        <p class="card-text text-center">Sección de comentarios de las actividades</p>
+                    </div>
+                    <a href="/Comentarios" class="btn btn-primary rounded-pill">ACCEDER</a>
+                </div>
+            </div>
+
+            <div class="col text-center d-flex align-items-center justify-content-center">
+                <div class="card casa-card" style="width: 15rem;">
+                    <img src="/static/images/perfilicon.png" class="card-img-top home-img" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">PERFIL</h5>
+                        <p class="card-text text-center">Visualizar tus datos personales y editarlos</p>
+                    </div>
+                    <a href="/Perfil" class="btn btn-primary rounded-pill">ACCEDER</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+{% endblock %}

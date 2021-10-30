@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+  <div class="container">
+
+    <h1 class="mb-5">Registro de Actividades</h1>
+    
+    <a href="/listar_actividades" class="btn btn-primary mb-5"> Listar actividad </a>
+
+    <br>
+    <div class="text-warning">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <ul class=flashes>
+          {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+    </div>
+    <br>
+
+    <form action="/registradito" method="POST">
+      
+      <div class="mb-3">
+        <label for="descripcion" class="form-label">Nombre de la actividad:</label>
+        <input type="text" class="form-control js-nombre" id="descripcion" title="Ingrese la descripción de la actividad" name="descripcion" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="fecha_inicio" class="form-label">Inicio:</label>
+        <input type="datetime-local" class="form-control js-nombre" id="fecha_inicio" title="Ingrese la fecha de inicio de actividad" name="fecha_inicio"required>
+      </div>
+
+      <div class="mb-3">
+        <label for="fecha_final" class="form-label">final:</label>
+        <input type="datetime-local" class="form-control js-nombre" id="fecha_final" title="Ingrese la fecha final de actividad" name="fecha_final" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="profesor" class="form-label">Nota del estudiante:</label>
+        <input type="text" class="form-control js-nombre" id="profesor" title="Ingrese un nombre completo" name="nota" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="profesor" class="form-label">Id de la materia:</label>
+        <input type="text" class="form-control js-nombre" id="profesor" title="Ingrese un nombre completo" name="id_materia" required>
+      </div>
+
+      <input type="submit" class="btn btn-primary" value="Ingresar">
+
+    </form>
+
+  </div>
+
+  {% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+  <div class="container">
+
+    <h1 class="mb-5">Editar materia</h1>
+
+    <a href="/Materias" class="btn btn-primary mb-5">Listar Materias</a>
+
+    <!-- Codigo para hacer aparecer un mensaje -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul class=flashes>
+      {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+    {% endwith %}
+
+    <form action="/Materias/Actualizar/{{ materia.0 }}" method="POST">
+
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre: </label>
+        <input type="text" class="form-control js-nombre" id="nombre" value="{{materia.1}}" title="Ingrese un nombre" name="nombre">
+      </div>
+
+      
+      <div class="mb-3">
+        <label for="nivel" class="form-label">Nivel: </label>
+        <input type="number" class="form-control js-nombre" id="nivel" value="{{ materia.2 }}" title="Ingrese el nivel" name="nivel" min="1" max="3">
+      </div>
+
+      <div class="mb-3">
+        <label for="horario" class="form-label">horario: </label>
+        <input type="text" class="form-control js-nombre" id="horario" value="{{materia.3}}" title="Ingrese un horario" name="horario">
+      </div>
+
+      <div class="mb-3">
+        <label for="profesor" class="form-label">Profesor: </label>
+        <input type="text" class="form-control js-nombre" id="profesor" value="{{materia.4}}" title="Ingrese el nombre del profesor" name="profesor">
+      </div>
+
+      <input type="submit" class="btn btn-primary" value="Ingresar">
+
+    </form>
+  </div>
+  
+{% endblock %}

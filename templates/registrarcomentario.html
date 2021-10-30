@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="container">
+
+    <h1 class="mb-5">Registro de comentarios</h1>
+
+    <a href="/Comentarios" class="btn btn-primary mb-5">Ver comentarios</a>
+
+    <br>
+    <div class="alert alert-warning flashes" role="alert" style="font-size: large;">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <p class="{{ category }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <br>
+
+    <form action="/Comentarios/Registrar_comentario" method="POST">
+
+        <div class="mb-3">
+            <label for="fechaCreacionComment" class="form-label">Fecha de cración </label>
+            <input type="datetime-local" class="form-control js-nombre" id="fechaCreacionComment" value="" title="Ingrese la fecha de hoy" name="fechaCreacionComment" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="descripcionComment" class="form-label">Descripción </label>
+            <textarea class="form-control"  id="descripcionComment" style="height: 100px" title="Ingrese el comentario" name="descripcionComment" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="actividadComment" class="form-label">Id Actividad </label>
+            <input type="number" class="form-control js-nombre" id="actividadComment" value="" title="Ingrese el codigo de la actividad" name="actividadComment" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="docenteComment" class="form-label">Id Docente </label>
+            <input type="number" class="form-control js-nombre" id="docenteComment" value="" title="Ingrese el codigo del docente" name="docenteComment" required>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Ingresar">
+
+    </form>
+
+</div>
+
+{% endblock %}

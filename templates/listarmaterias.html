@@ -1,0 +1,102 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="container">
+  <br>
+  <h1 class="mb-5">Listado de materias</h1>
+  {%if rol != 'Estudiante' and rol != 'Docente'%}
+  <a href="/Materias/Registrar" class="btn btn-primary mb-5"> Registrar Materias </a>
+  {%endif%}
+
+  <br>
+  <div class="text-warning">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul class=flashes>
+      {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+  </div>
+  <br>
+
+  <!------------------------------ [[TABLA DE MATERIAS]] ----------------------------------------------------->
+  <table class="table">
+
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Nivel</th>
+        <th scope="col">horario</th>
+        <th scope="col">Docente</th>
+        {% if rol != 'Docente'%}
+        <th scope="col"> Acciones</th>
+        {% endif %}
+      </tr>
+    </thead>
+
+    <tbody>
+
+      {% for materia in materias %}
+      <tr>
+        <th scope="row">{{materia.0}}</th>
+        <td>{{materia.1}}</td>
+        <td>{{materia.2}}</td>
+        <td>{{materia.3}}</td>
+        <td>{{materia.4}}</td>
+        {% if rol == 'Estudiante' %}
+        <td><a href="/Materias/Matricular/{{ materia.0 }}" class="btn btn-secondary">Matricular</a></td>
+        {% endif %}
+        {% if rol != 'Estudiante' and rol != 'Docente'%}
+        <td><a href="/Materias/Editar/{{ materia.0 }}" class="btn btn-secondary">Editar</a></td>
+        <td><a href="/Materias/Eliminar/{{ materia.0 }}" class="btn btn-danger btn-delete">Eliminar</a></td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+  <br>
+
+  <!------------------------------ [[TABLA DE MATERIAS MATRICULADAS]] ----------------------------------------------------->
+  {% if rol != 'Administrador' and rol != 'Docente'%}
+    <h1 class="mb-5">materias matriculadas</h1>
+    <br>
+    <table class="table">
+
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Materia</th>
+          <th scope="col">Nivel</th>
+          <th scope="col">Horario</th>
+          <th scope="col">Docente</th>
+          <th scope="col">Acción</th>
+        </tr>
+      </thead>
+  {% endif %}
+    <tbody>
+
+      {% for materia in matriculas %}
+      <tr>
+        <th scope="row">{{materia.0}}</th>
+        <td>{{materia.1}}</td>
+        <td>{{materia.2}}</td>
+        <td>{{materia.3}}</td>
+        <td>{{materia.4}}</td>
+        {% if rol != 'Administrador' and rol != 'Docente'%}
+        <td><a href="/Materias/Eliminar_matricula/{{ materia[5] }}" class="btn btn-danger btn-delete">Des-matricular</a></td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+</div>
+
+{% endblock %}

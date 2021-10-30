@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peril</title>
+</head>
+
+<body>
+    <h2 style="margin-left: 170px; margin-top: 100px;">Perfil de {{usuario[6]}}</h2>
+    <div class="container" style="text-align: center; margin-right: 70px;">
+    <div class="row align-items-center">
+        <div class="col-8">
+            <form class="row g-5">
+                <div class="col-md-6">
+                    <label class="form-label" style="font-weight: bold;">Nombre</label>
+                    <input type="text" class="form-control" value="{{usuario[1]}}" readonly>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label" style="font-weight: bold;">Apellido</label>
+                    <input type="text" class="form-control" value="{{usuario[2]}}" readonly>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label" style="font-weight: bold;">Correo electronico</label>
+                    <input type="email" class="form-control" value="{{usuario[3]}}" readonly>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label" style="font-weight: bold;">Nombre de usuario</label>
+                    <input type="text" class="form-control" value="{{usuario[4]}}" readonly>
+                </div>
+            </form>
+        </div>
+        <div class="col">
+            {%if rol == 'Administrador'%}
+                <img src="../static/images/adminicon.png" class="rounded float-end">
+            {%elif rol == 'Estudiante'%}
+                <img src="../static/images/studenticon.png" class="rounded float-end">
+            {%else %}
+                <img src="../static/images/teachericon.png" class="rounded float-end">
+            {%endif%}
+        </div>
+    </div>
+
+</body>
+
+</html>
+{% endblock %}

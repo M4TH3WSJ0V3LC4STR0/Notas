@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="container">
+
+    <h1 class="mb-5">Editar Comentario</h1>
+
+    <a href="/Comentarios" class="btn btn-primary mb-5">Ver comentarios</a>
+
+    <!-- Codigo para hacer aparecer un mensaje -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul class=flashes>
+        {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <form action="/Comentarios/Actualizar_comentario/{{ comentario.0 }}" method="POST">
+        <div class="mb-3">
+            <label for="fechaCreacionComment" class="form-label">Fecha de cración </label>
+            <input type="datetime-local" class="form-control js-nombre" id="fechaCreacionComment" value="{{ comentario.1 }}" title="Ingrese la fecha de hoy" name="fechaCreacionComment" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label for="descripcionComment" class="form-label">Descripción </label>
+            <input type="text" class="form-control" style="height: 100px" id="descripcionComment" value="{{ comentario.2 }}" title="Ingrese el comentario" name="descripcionComment">
+        </div>
+
+        <div class="mb-3">
+            <label for="actividadComment" class="form-label">Actividad </label>
+            <input type="number" class="form-control js-nombre" id="actividadComment" value="{{ comentario.3 }}" title="Ingrese el codigo de la actividad" name="actividadComment" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label for="docenteComment" class="form-label">Docente </label>
+            <input type="number" class="form-control js-nombre" id="docenteComment" value="{{ comentario.4 }}" title="Ingrese el codigo del docente" name="docenteComment" readonly>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Ingresar">
+
+    </form>
+</div>
+
+{% endblock %}

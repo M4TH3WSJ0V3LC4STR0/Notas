@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+  <div class="container">
+
+    <h1 class="mb-5">Listado de Usuarios</h1>
+
+      <a href="/Registro_Usuarios" class="btn btn-primary mb-5"> Registrar Usuarios </a>
+
+      <br>
+      <div class="text-warning">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <ul class=flashes>
+          {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+      </div>
+      <br>
+
+    <table class="table">
+      <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Email</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Rol</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for usuario in tablaUsuarios%}
+          <tr>
+              <th scope="row">{{usuario.0}}</th>
+              <td>{{usuario.1}}</td>
+              <td>{{usuario.2}}</td>
+              <td>{{usuario.3}}</td>
+              <td>{{usuario.4}}</td>
+              <td>{{usuario.6}}</td>
+              <td><a href="/Lista_Usuarios/Editar/{{ usuario.0 }}" class="btn btn-secondary">Editar</a></td>
+              <td><a href="/Lista_Usuarios/Eliminar/{{ usuario.0 }}" class="btn btn-danger btn-delete">Eliminar</a></td>
+              <!-- <td><a href="#{{ loop.index-1  }}" class="btn btn-secondary">Editar</a></td>
+              <td><a href="/Eliminar_Usuarios/{{ loop.index-1  }}" class="btn btn-danger js-eliminar">Eliminar</a></td> -->
+            </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+  
+  {% endblock %}
+
+

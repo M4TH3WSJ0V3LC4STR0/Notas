@@ -1,0 +1,35 @@
+body {
+  background-image: url(../images/background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.form-registro {
+  width: 350px;
+  padding: 16px;
+  border-radius: 10px;
+  margin: 50px auto;
+  background-color: #3b4652d3;
+}
+.clase-input {
+  padding: 3px 10px;
+  border: 1px solid #f6f6f6;
+  border-radius: 3px;
+  /* margin: 8px 10px; */
+  display: inline-block;
+}
+
+.color-login {
+  background: #3b4652;
+}
+
+button {
+  text-align: center;
+  font-weight: bold;
+}
+
+.color-text {
+  color:white;
+}

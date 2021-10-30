@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+  <div class="container">
+
+    <h1 class="mb-5">Registro de usuarios</h1>
+
+    <a href="/Lista_Usuarios" class="btn btn-primary mb-5"> Ver usuarios </a>
+
+    <br>
+    <div class="text-warning">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+      {% endwith %}
+    </div>
+    <br>
+    
+    <form action="/Register" method="POST">
+
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre: </label>
+        <input type="text" class="form-control js-nombre" id="Nombre" value="" title="Ingrese nombre" name="nameRegistro" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="profesor" class="form-label">Apellido: </label>
+        <input type="text" class="form-control js-nombre" id="Apellido" value="" title="Ingrese apellido" name="apellidoRegistro" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="creditos" class="form-label">Email: </label>
+        <input type="text" class="form-control js-nombre" id="Email" value="" title="Ingrese correo electronico" name="emailRegistro" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Username: </label>
+        <input type="text" class="form-control js-nombre" id="Usuario" value="" title="Ingrese usuario" name="usernameRegistro" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Password: </label>
+        <input type="text" class="form-control js-nombre" id="Password" value="" title="Ingrese contraseña" name="passwordRegistro" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Rol: </label> <br>
+        <input type="radio" name="rolRegistro" value="Administrador" title="Ingrese rol" required>Administrador<br>
+        <input type="radio" name="rolRegistro" value="Docente" title="Ingrese rol"> Docente<br>
+        <input type="radio" name="rolRegistro" value="Estudiante" title="Ingrese rol"> Estudiante<br>
+      <br>
+      </div>
+
+      <div class="mb-3">
+        <input type="checkbox" class="form-check-input" id="check" title="Llene todo los campos" name="check" required>
+        <label for="creditos" class="form-label">Confirmar </label>
+      </div>
+      
+      <input type="submit" class="btn btn-primary" value="Ingresar"></input>
+      
+    </form>
+  </div>
+
+    {% endblock %}

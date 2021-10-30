@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+  <div class="container">
+    <br>
+    <h1 class="mb-5">Listado de actividades</h1>
+    {%if rol != 'Estudiante'%}
+      <a href="/registrar_actividad" class="btn btn-primary mb-5"> Registrar actividad </a>
+    {%endif%}
+
+    <br>
+    <div class="text-warning">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+      {% endwith %}
+    </div>
+    <br>
+
+    <table class="table">
+
+      <thead>
+
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">Inicio</th>
+          <th scope="col">Final</th>
+          <th scope="col">Nota</th>
+          <th scope="col">id Materia</th>
+          {%if rol != 'Estudiante'%}
+            <th scope="col">Acciones</th>
+          {%endif%}
+        </tr>
+
+      </thead>
+
+      <tbody>
+        {% for actividad in activities %}
+            <tr>
+              <!-- <td>{{ loop.index  }}</td> -->
+              <th scope="row">{{actividad[0]}}</th>
+                <td>{{actividad[1]}}</td>
+                <td>{{actividad[2]}}</td>
+                <td>{{actividad[3]}}</td>
+                <td>{{actividad[4]}}</td>
+                <td>{{actividad[5]}}</td>
+                
+                {%if rol != 'Estudiante'%}
+                  <td><a href="/edit/{{actividad.0}}" class="btn btn-secondary">Editar</a></td>
+                  <td><a href="/delete/{{actividad.0}}" class="btn btn-danger btn-delete">Eliminar</a></td>
+                {%endif%}
+            </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}
+

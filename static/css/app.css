@@ -1,0 +1,14 @@
+body{
+  background: #f8f8f8;
+}
+.success{
+  font-size: 1em;
+  color: green;
+}
+.casa-card{
+  min-height: 500px !important;
+}
+.casa-card .card-body{
+  min-height: 200px !important;
+}
+

@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+  <div class="container">
+
+    <h1 class="mb-5">Editar usuario</h1>
+
+    <a href="/Lista_Usuarios" class="btn btn-primary mb-5">Lista de usuarios</a>
+
+    <!-- Codigo para hacer aparecer un mensaje -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul class=flashes>
+      {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+    {% endwith %}
+
+    <form action="/Lista_Usuarios/Actualizar/{{ usuario.0 }}" method="POST">
+
+        <div class="mb-3">
+            <label for="nameRegistro" class="form-label">Nombre: </label>
+            <input type="text" class="form-control js-nombre" id="nameRegistro" value="{{ usuario.1 }}" title="Ingrese nombre" name="nameRegistro">
+          </div>
+    
+          <div class="mb-3">
+            <label for="apellidoRegistro" class="form-label">Apellido: </label>
+            <input type="text" class="form-control js-nombre" id="apellidoRegistro" value="{{ usuario.2 }}" title="Ingrese apellido" name="apellidoRegistro">
+          </div>
+    
+          <div class="mb-3">
+            <label for="emailRegistro" class="form-label">Email: </label>
+            <input type="text" class="form-control js-nombre" id="emailRegistro" value="{{ usuario.3 }}" title="Ingrese correo electronico" name="emailRegistro">
+          </div>
+    
+          <div class="mb-3">
+            <label for="usernameRegistro" class="form-label">Username: </label>
+            <input type="text" class="form-control js-nombre" id="usernameRegistro" value="{{ usuario.4 }}" title="Ingrese usuario" name="usernameRegistro">
+          </div>
+    
+          <div class="mb-3">
+            <label for="passwordRegistro" class="form-label">Password: </label>
+            <input type="text" class="form-control js-nombre" id="passwordRegistro" value="" title="Ingrese contraseña" name="passwordRegistro">
+          </div>
+    
+          <div class="mb-3">
+            <label for="rolRegistro" class="form-label">Rol: </label> <br>
+            <input type="text" class="form-control js-nombre" id="rolRegistro" value="{{ usuario.6 }}" title="Ingrese contraseña" name="rolRegistro">
+          </div>
+
+      <input type="submit" class="btn btn-primary" value="Ingresar">
+
+    </form>
+  </div>
+  
+{% endblock %}
